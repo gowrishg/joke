@@ -3,4 +3,5 @@
     <string name="tell_a_joke_button">Tell A Joke</string>
     <string name="joke_message">Joke retrieved from library</string>
     <string name="free_joke">FREE JOKE</string>
+    <string name="unable_get_joke_message">Unable To Fetch A Joke</string>
 </resources>
