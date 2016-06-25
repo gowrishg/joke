@@ -20,12 +20,14 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
     Button mTellAJokeButton;
     FrameLayout mAdFragment;
     String mJoke;
+    ContentLoadingProgressBar mLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createInterstitialAdObj();
+        mLoader = (ContentLoadingProgressBar) findViewById(R.id.loader);
         mAdFragment = (FrameLayout) findViewById(R.id.ad_fragment);
         mTellAJokeButton = (Button) findViewById(R.id.tell_a_joke);
         mTellAJokeButton.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
             public void onClick(View v) {
                 //kudu.in.joke_provider.JokeGenerator jokeGenerator = new kudu.in.joke_provider.JokeGenerator();
                 //String joke = jokeGenerator.tellAJoke();
+                mLoader.show();
 
                 Toast.makeText(MainActivity.this, R.string.joke_message, Toast.LENGTH_SHORT).show();
 
@@ -100,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
 
     @Override
     public void endOfAsync(String joke) {
+        mLoader.hide();
         mJoke = joke;
         if (TextUtils.isEmpty(joke)) {
             Toast.makeText(this, R.string.unable_get_joke_message, Toast.LENGTH_LONG).show();
