@@ -3,6 +3,7 @@ package in.kudu.joke;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -105,10 +106,6 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
     public void endOfAsync(String joke) {
         mLoader.hide();
         mJoke = joke;
-        if (TextUtils.isEmpty(joke)) {
-            Toast.makeText(this, R.string.unable_get_joke_message, Toast.LENGTH_LONG).show();
-            return;
-        }
 
         boolean isAdEnabled = getResources().getBoolean(R.bool.enable_advertisement);
 
@@ -129,7 +126,24 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
         loadJokeActivity(mJoke);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("JOKE_KEY", mJoke);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mJoke = savedInstanceState.getString("JOKE_KEY");
+    }
+
     private void loadJokeActivity(String joke) {
+        if (TextUtils.isEmpty(joke)) {
+            Toast.makeText(this, R.string.unable_get_joke_message, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Intent intent = new Intent(this, in.kudu.joke_viewer.JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
         startActivity(intent);
