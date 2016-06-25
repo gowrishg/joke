@@ -11,16 +11,16 @@
 
     <Button
         android:id="@+id/tell_a_joke"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/tell_a_joke_button" />
+        android:text="@string/tell_a_joke_button"
+        android:textColor="@color/colorPrimaryDark" />
 
     <FrameLayout
+        android:id="@+id/ad_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ad_fragment"
-        ></FrameLayout>
+        android:layout_alignParentBottom="true"></FrameLayout>
 
 </RelativeLayout>

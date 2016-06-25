@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 import in.kudu.joke.backend.joke.Joke;
 import in.kudu.joke_viewer.JokeActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AsyncHandler {
 
     Button mTellAJokeButton;
     FrameLayout mAdFragment;
@@ -72,5 +72,12 @@ public class MainActivity extends AppCompatActivity {
             mTellAJokeButton.setText(R.string.tell_a_joke_button);
         }
 
+    }
+
+    @Override
+    public void endOfAsync(String joke) {
+        Intent intent = new Intent(this, in.kudu.joke_viewer.JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, joke);
+        startActivity(intent);
     }
 }
