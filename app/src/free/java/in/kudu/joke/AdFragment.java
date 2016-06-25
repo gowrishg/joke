@@ -61,6 +61,24 @@ public class AdFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        mAdView.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdView.resume();
+    }
+
+    @Override
+    public void onDestroy() {
+        mAdView.destroy();
+        super.onDestroy();
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
