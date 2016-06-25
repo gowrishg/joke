@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             mTellAJokeButton.setText(R.string.free_joke);
         } else {
             mAdFragment.setVisibility(View.GONE);
-            mTellAJokeButton.setText(R.string.paid_joke);
+            mTellAJokeButton.setText(R.string.tell_a_joke_button);
         }
 
     }
