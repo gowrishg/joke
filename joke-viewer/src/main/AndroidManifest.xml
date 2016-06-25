@@ -5,10 +5,10 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light"
-        >
-        <activity android:name="in.kudu.joke_viewer.JokeActivity"></activity>
+        android:supportsRtl="true">
+        <activity
+            android:name="in.kudu.joke_viewer.JokeActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
     </application>
 
 </manifest>
