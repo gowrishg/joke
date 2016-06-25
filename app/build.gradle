@@ -30,6 +30,14 @@ android {
         }
 
     }
+    testOptions {
+        unitTests.all {
+            // All the usual Gradle options.
+            jvmArgs '-XX:MaxPermSize=256m'
+            unitTests.returnDefaultValues = true
+            resultsDir = "${project.buildDir}/results"
+        }
+    }
 }
 
 dependencies {
@@ -46,8 +54,32 @@ dependencies {
     androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
     // Optional -- UI testing with Espresso
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
 }
 
 configurations.all {
     resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
 }
+
+
+task runAppEngine(dependsOn: ":backend:appengineRun") {
+    project(":backend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+
+    doLast {
+        println "Started Server!"
+    }
+}
+
+runAppEngine.finalizedBy "runAllTestCases"
+
+task runAllTestCases(dependsOn: "connectedCheck") {
+    doLast {
+        println "All Tests Done!"
+    }
+}
+
+runAllTestCases.finalizedBy ":backend:appengineStop"
+
