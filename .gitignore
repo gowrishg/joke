@@ -1,0 +1,47 @@
+local.properties
+obj/**
+libs/**
+bin/**
+gen/**
+*.bak
+Debug/**
+**/obj/**
+**/libs/**
+**/bin/**
+**/gen/**
+**/.settings/**
+.settings/
+bin/
+gen/
+libs/
+
+# Mac OSX clutter
+*.DS_Store
+.DS_Store
+**/.DS_Store/**
+
+# Gradle files
+.gradle/
+build/
+
+# Android Studio
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/datasources.xml
+.idea/dataSources.ids
+.idea/libraries/**
+*.iml
+.idea/**
+
+# Older IntelliJ Project files
+/*/out
+/*/*/build
+/*/*/production
+*.iws
+*.ipr
+*~
+*.swp
+
+# Do not commit gradle files
+**/gradle/**
+
