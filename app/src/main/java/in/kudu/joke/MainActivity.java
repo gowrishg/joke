@@ -36,11 +36,13 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
 
                 Toast.makeText(MainActivity.this, R.string.joke_message, Toast.LENGTH_SHORT).show();
 
-
                 new EndpointsAsyncTask().execute(MainActivity.this);
             }
         });
+        showAd();
+    }
 
+    private void showAd() {
         boolean isAdEnabled = getResources().getBoolean(R.bool.enable_advertisement);
         if (isAdEnabled) {
             mAdFragment.setVisibility(View.VISIBLE);
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
             mAdFragment.setVisibility(View.GONE);
             mTellAJokeButton.setText(R.string.tell_a_joke_button);
         }
-
     }
 
     IAd.AdController mAdController = null;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
         if (!isAdEnabled) {
             return;
         }
+
         //! using reflection as the Class wouldn't be compilable in other flavour
         Class c = null;
         Method method = null;
@@ -104,10 +106,12 @@ public class MainActivity extends AppCompatActivity implements AsyncHandler, IAd
             return;
         }
 
-        if (mAdController == null) {
-            loadJokeActivity(mJoke);
-        } else {
+        boolean isAdEnabled = getResources().getBoolean(R.bool.enable_advertisement);
+
+        if (isAdEnabled && mAdController != null) {
             mAdController.showAd();
+        } else {
+            loadJokeActivity(mJoke);
         }
     }
 
