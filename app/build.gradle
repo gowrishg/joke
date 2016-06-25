@@ -17,6 +17,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        free {
+            applicationId "in.kudu.joke.free"
+            versionName "1.0-free"
+        }
+        paid {
+            applicationId "in.kudu.joke.full"
+            versionName "1.0"
+        }
+
+    }
 }
 
 dependencies {

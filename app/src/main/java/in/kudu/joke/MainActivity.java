@@ -30,5 +30,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        boolean isAdEnabled = getResources().getBoolean(R.bool.enable_advertisement);
+        if (isAdEnabled)
+            mTellAJokeButton.setText(R.string.free_joke);
+        else {
+            mTellAJokeButton.setText(R.string.paid_joke);
+        }
     }
 }
