@@ -17,4 +17,10 @@
         android:layout_centerInParent="true"
         android:text="@string/tell_a_joke_button" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_fragment"
+        ></FrameLayout>
+
 </RelativeLayout>

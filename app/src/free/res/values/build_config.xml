@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="enable_advertisement">true</bool>
+    <string name="ad_unit_id">***REMOVED***</string>
+    <string name="ad_app_id">***REMOVED***</string>
+
 </resources>

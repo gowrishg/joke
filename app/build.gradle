@@ -34,7 +34,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // Added for AdMob
-    compile 'com.google.android.gms:play-services-ads:9.0.2'
+    freeCompile 'com.google.android.gms:play-services-ads:9.0.2'
     compile project(path: ':joke-viewer')
     compile project(path: ':joke-provider')
+    compile 'com.android.support:support-v4:23.4.0'
 }
