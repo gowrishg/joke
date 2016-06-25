@@ -44,6 +44,7 @@ public class JokeActivityTest {
         }
 
         onView(withId(R.id.joke)).check(matches(withText("Test Joke")));
+
     }
 
 
