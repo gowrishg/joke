@@ -9,8 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="in.kudu.joke.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/tell_a_joke"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        android:text="@string/tell_a_joke_button" />
+
 </RelativeLayout>
